@@ -7,7 +7,7 @@
 int main(int argc, char** argv)
 {
   caffe::Caffe::set_mode(caffe::Caffe::CPU);
-  std::shared_ptr<caffe::Net<float> > net_;
+  std::unique_ptr<caffe::Net<float> > net_;
   net_.reset(new caffe::Net<float>(argv[1], caffe::TEST));
   net_->CopyTrainedLayersFrom(argv[2]);
   cv::Mat img = cv::imread(argv[3], -1);
